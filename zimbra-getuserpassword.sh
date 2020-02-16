@@ -19,17 +19,12 @@ while getopts ":u:d:" opt; do
     u) USER_EMAIL="$OPTARG"
     ;;
     d) DOMAIN="$OPTARG"
-       USER_EMAIL=$(getdomainUser)
+       USER_EMAIL=$($ZMPROV -l gaa $DOMAIN)
     ;;
     \?) echo "Invalid option -$OPTARG" >&2 && usage
     ;;
   esac
 done
-
-
-getdomainUser() {
-$ZMPROV -l gaa $DOMAIN
-}
 
 getuserPassword (){
 for ACCOUNT in $USER_EMAIL;
