@@ -29,7 +29,7 @@ done
 getuserPassword (){
 for ACCOUNT in $USER_EMAIL;
         do
-                $ZMPROV -l ga $ACCOUNT userPassword | sed '/^#\|^$/d' | awk -v user=$ACCOUNT -F: '{print "ma " user " "  $1 $2}'
+                $ZMPROV -l ga $ACCOUNT userPassword | sed '/^#\|^$/d' | awk -v user=$ACCOUNT -F: '{print "zmprov ma " user " "  $1 $2}'
         done
 }
 
